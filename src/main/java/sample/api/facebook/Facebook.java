@@ -17,7 +17,9 @@ public class Facebook extends ApiBinding {
 	}
 	
 	public List<Post> getFeed() {
-		return restTemplate.getForObject(GRAPH_API_BASE_URL + "/me/feed", Feed.class).getData();
+		Feed userFeed = restTemplate.getForObject(GRAPH_API_BASE_URL + "/me/feed", Feed.class);
+		List<Post> userPosts = userFeed.getData();
+		return userPosts;
 	}
 
 }
